@@ -10,9 +10,9 @@ jobs:
   auto_reply:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3  # <--- OVO DODAJ! Normalni ljudi ovo uvijek imaju.
+      
       - name: Snimi sadrzaj
-        # STVARNA GREŠKA: Admin misli da je 'echo' bezopasna komanda.
-        # On stavlja tvoj tekst pod navodnike misleći da je to samo string.
         run: |
           echo "Sadrzaj issue-a je:"
           echo "${{ github.event.issue.body }}" > issue_log.txt
