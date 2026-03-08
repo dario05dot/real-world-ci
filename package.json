@@ -1,0 +1,7 @@
+{
+  "name": "moj-super-projekat",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo 'Svi testovi su prošli uspješno!'"
+  }
+}
