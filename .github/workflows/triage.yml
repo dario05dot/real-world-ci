@@ -1,0 +1,19 @@
+name: Issue Triage Bot
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  auto_reply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Snimi sadrzaj
+        # STVARNA GREŠKA: Admin misli da je 'echo' bezopasna komanda.
+        # On stavlja tvoj tekst pod navodnike misleći da je to samo string.
+        run: |
+          echo "Sadrzaj issue-a je:"
+          echo "${{ github.event.issue.body }}" > issue_log.txt
+          echo "Zavrseno snimanje!"
